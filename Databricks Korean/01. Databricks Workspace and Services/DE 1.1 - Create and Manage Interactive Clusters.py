@@ -19,7 +19,6 @@
 # MAGIC 
 # MAGIC 이 데모에서는 Databricks Data Science & Engineering Workspace를 사용하여 다목적 Datbricks 클러스터를 만들고 관리하는 방법에 대해 설명합니다.
 # MAGIC 
-# MAGIC 테스트
 # MAGIC ## 학습 목표
 # MAGIC 이 과정을 통해 다음을 수행할 수 있습니다. : 
 # MAGIC * 클러스터 UI를 사용하여 클러스터 구성 및 배포
