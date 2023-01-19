@@ -319,7 +319,7 @@ DESCRIBE EXTENDED weather_external
 
 -- MAGIC %md
 -- MAGIC 
--- MAGIC **managed tables과 external tables의 주요 차이점을 강조합니다.** 기본적으로 관리되는 테이블과 연결된 파일은 작업영역에 연결된 루트 DBFS 저장소의 이 위치에 저장되며 테이블이 삭제될 때 삭제됩니다. <br>
+-- MAGIC **managed tables과 external tables의 주요 차이점을 강조합니다.** 기본적으로 managed table과 연결된 파일은 작업영역에 연결된 루트 DBFS 저장소의 이 위치에 저장되며 테이블이 삭제될 때 삭제됩니다. <br>
 -- MAGIC **This highlights the main differences between managed and external tables.** By default, the files associated with managed tables will be stored to this location on the root DBFS storage linked to the workspace, and will be deleted when a table is dropped.
 -- MAGIC 
 -- MAGIC 외부 테이블용 파일은 테이블 작성 시 제공된 위치에 유지되므로 사용자가 실수로 기본 파일을 삭제하는 것을 방지합니다. **External tables을 다른 데이터베이스로 쉽게 마이그레이션하거나 이름을 변경할 수 있지만, managed tables을 사용하는 이러한 작업은 모든 기본 파일을 다시 작성해야 합니다.**<br>
