@@ -14,11 +14,9 @@
 -- MAGIC # 델타 테이블 관리(Managing Delta Tables)
 -- MAGIC
 -- MAGIC 이 노트북에서는 Databricks에서 SQL을 사용하여 데이터와 테이블을 기본적으로 조작하는 방법에 대해 알아보겠습니다. <br/>
--- MAGIC In this notebook, we'll explore basic manipulation of data and tables with SQL on Databricks.
 -- MAGIC
 -- MAGIC Delta Lake는 Datbricks로 작성된 모든 테이블의 기본 형식입니다. <br>
 -- MAGIC Delta Lake에서 SQL 문을 실행한 경우 이미 Delta Lake로 작업하고 있을 가능성이 높습니다. <br/>
--- MAGIC Note that Delta Lake is the default format for all tables created with Databricks; if you've been running SQL statements on Databricks, you're likely already working with Delta Lake.
 -- MAGIC
 -- MAGIC
 -- MAGIC ## 학습 목표
@@ -56,7 +54,6 @@
 -- MAGIC 이 표는 아래 과정을 통해 확인할 수 있습니다.<br>
 -- MAGIC 가장 쉬운 방법 중 하나로 시작하겠습니다. <br>
 -- MAGIC 비어 있는 델타 레이크 테이블을 등록하는 것입니다. <br/>
--- MAGIC There's not much code you need to write to create a table with Delta Lake. There are a number of ways to create Delta Lake tables that we'll see throughout the course. We'll begin with one of the easiest methods: registering an empty Delta Lake table.
 -- MAGIC
 -- MAGIC We need: 
 -- MAGIC - **`CREATE TABLE`** 문 [ **`CREATE TABLE`** statement)]

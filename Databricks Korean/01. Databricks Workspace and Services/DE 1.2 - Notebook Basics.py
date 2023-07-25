@@ -124,6 +124,18 @@ print("I'm running Python!")
 # MAGIC * 셀의 시작 부분에 있는 단일 백분율(%) 기호는 magic command을 나타냅니다.
 # MAGIC   * Cell당 하나의 magic command만 가질 수 있습니다.
 # MAGIC   * Cell에서 magic command가 첫 번째 줄에 위치해야 합니다.
+# MAGIC
+# MAGIC
+# MAGIC ### 지원하는 Magic Commands
+# MAGIC - %python
+# MAGIC - %sql
+# MAGIC - %md
+# MAGIC - %Scala
+# MAGIC - %R
+# MAGIC - %run
+# MAGIC - %sh
+# MAGIC - %bash
+# MAGIC - %fs
 
 # COMMAND ----------
 
