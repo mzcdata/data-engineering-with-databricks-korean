@@ -248,10 +248,8 @@ WHEN NOT MATCHED AND u.type = "insert"
 -- MAGIC MERGE 문의 영향을 받은 레코드는 3개뿐입니다. <br>
 -- MAGIC 업데이트 테이블의 레코드 중 하나는 학생 테이블에 일치하는 ID가 없지만 업데이트로 표시되어 있습니다. <br>
 -- MAGIC 사용자 지정 논리에 따라 이 레코드를 삽입하기보다는 무시했습니다. <br/>
--- MAGIC Note that only 3 records were impacted by our **`MERGE`** statement; one of the records in our updates table did not have a matching **`id`** in the students table but was marked as an **`update`**. Based on our custom logic, we ignored this record rather than inserting it. 
 -- MAGIC
 -- MAGIC 최종 INSERT 절에 일치하지 않는 **`update`** 로 표시된 레코드를 포함하도록 위의 문장을 어떻게 수정하시겠습니까? <br/>
--- MAGIC How would you modify the above statement to include unmatched records marked **`update`** in the final **`INSERT`** clause?
 
 -- COMMAND ----------
 
@@ -262,10 +260,8 @@ WHEN NOT MATCHED AND u.type = "insert"
 -- MAGIC ## 테이블 DROP(Dropping a Table)
 -- MAGIC
 -- MAGIC 대상 테이블에 대한 적절한 권한이 있다고 가정하면 **`DROP TABLE`** 명령을 사용하여 레이크 하우스의 데이터를 영구적으로 삭제할 수 있습니다. <br/>
--- MAGIC Assuming that you have proper permissions on the target table, you can permanently delete data in the lakehouse using a **`DROP TABLE`** command.
 -- MAGIC
 -- MAGIC 참고: 나중에 ACL(테이블 액세스 제어 목록)과 기본 권한에 대해 설명합니다. 적절하게 구성된 레이크 하우스에서 사용자는 생산 테이블을 삭제할 수 없어야 한다. <br/>
--- MAGIC **NOTE**: Later in the course, we'll discuss Table Access Control Lists (ACLs) and default permissions. In a properly configured lakehouse, users should **not** be able to delete production tables.
 
 -- COMMAND ----------
 
