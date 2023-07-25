@@ -21,11 +21,11 @@
 -- MAGIC
 -- MAGIC ## 학습 목표
 -- MAGIC 이 과정을 통해 다음을 수행할 수 있습니다:
--- MAGIC * 델타 레이크 테이블 작성 (Create Delta Lake tables)
--- MAGIC * Delta Lake 테이블에서 데이터 쿼리 (Query data from Delta Lake tables)
--- MAGIC * 델타 레이크 테이블에 레코드 삽입, 업데이트 및 삭제 (Insert, update, and delete records in Delta Lake tables)
--- MAGIC * 델타 레이크와 함께 업스타트 문 작성 (Write upsert statements with Delta Lake)
--- MAGIC * 델타 레이크 테이블 삭제 (Drop Delta Lake tables)
+-- MAGIC * Delta Lake 테이블 작성 (Create Delta Lake tables)
+-- MAGIC * Delta Lake 테이블에서 쿼리 (Query data from Delta Lake tables)
+-- MAGIC * Delta Lake 테이블에 Insert, Update, Delete (Insert, update, and delete records in Delta Lake tables)
+-- MAGIC * Delta Lake Upsert 문 작성 (Write upsert statements with Delta Lake)
+-- MAGIC * Delta Lake 테이블 삭제 (Drop Delta Lake tables)
 
 -- COMMAND ----------
 
@@ -220,9 +220,10 @@ SELECT * FROM updates;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC
--- MAGIC 지금까지 살펴본 구문을 사용하여 이 보기에서 유형별로 필터링하여 레코드를 삽입, 업데이트 및 삭제하는 3개의 문을 작성할 수 있습니다. 그러나 이렇게 하면 세 개의 개별 트랜잭션이 발생합니다. 이러한 트랜잭션 중 하나라도 실패하면 데이터가 잘못된 상태로 남을 수 있습니다. <br/>
+-- MAGIC 지금까지 살펴본 구문을 사용하여 이 보기에서 유형별로 필터링하여 레코드를 삽입, 업데이트 및 삭제하는 3개의 문을 작성할 수 있습니다. 그러나 이렇게 하면 세 개의 개별 트랜잭션이 발생합니다. <br/> 
+-- MAGIC 이러한 트랜잭션 중 하나라도 실패하면 데이터가 잘못된 상태로 남을 수 있습니다. <br/>
 -- MAGIC
--- MAGIC 대신, 우리는 이러한 행동을 단일 원자적 거래로 결합하여 세 가지 유형의 변경 사항을 모두 함께 적용한다. <br/>
+-- MAGIC 우리는 이러한 행동을 단일 거래로 결합하여 세 가지 유형의 변경 사항을 모두 함께 적용합니다. <br/>
 -- MAGIC
 -- MAGIC **`MERGE`** 문에는 일치시킬 필드가 하나 이상 있어야 하며, 일치할 때 또는 일치하지 않을 때 각 절에는 임의의 수의 추가 조건문이 있을 수 있습니다. <br/>
 -- MAGIC
