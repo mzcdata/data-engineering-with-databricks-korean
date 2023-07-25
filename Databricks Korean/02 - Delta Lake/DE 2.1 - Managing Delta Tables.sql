@@ -154,10 +154,8 @@ SELECT * FROM students
 -- MAGIC ## 레코드 업데이트(Updating Records)
 -- MAGIC
 -- MAGIC 레코드를 업데이트하면 현재 버전의 테이블을 스냅샷으로 읽고 WHERE 절과 일치하는 모든 필드를 찾은 다음 설명된 대로 변경 사항을 적용할 수 있습니다. <br/>
--- MAGIC Updating records provides atomic guarantees as well: we perform a snapshot read of the current version of our table, find all fields that match our **`WHERE`** clause, and then apply the changes as described.
 -- MAGIC
 -- MAGIC 아래에서는 문자 T로 시작하는 이름을 가진 모든 학생을 찾아 값 열의 숫자에 1을 추가합니다. <br/>
--- MAGIC Below, we find all students that have a name starting with the letter **T** and add 1 to the number in their **`value`** column.
 
 -- COMMAND ----------
 
@@ -171,7 +169,6 @@ WHERE name LIKE "T%"
 -- MAGIC
 -- MAGIC
 -- MAGIC 테이블을 다시 쿼리하여 변경사항이 적용되었는지 확인합니다. <br/>
--- MAGIC Query the table again to see these changes applied.
 
 -- COMMAND ----------
 
@@ -185,11 +182,9 @@ SELECT * FROM students
 -- MAGIC
 -- MAGIC ## 레코드 삭제(Deleting Records)
 -- MAGIC
--- MAGIC 삭제도 원자적이므로 데이터 레이크 하우스에서 데이터를 제거할 때 부분적으로만 성공할 위험이 없습니다. <br/>
--- MAGIC Deletes are also atomic, so there's no risk of only partially succeeding when removing data from your data lakehouse.
+-- MAGIC 삭제도 Atomic하므로 데이터 레이크 하우스에서 데이터를 제거할 때 부분적으로만 성공할 위험이 없습니다. <br/>
 -- MAGIC
 -- MAGIC DELETE 문은 하나 이상의 레코드를 제거할 수 있지만 항상 단일 트랜잭션이 발생합니다. <br/>
--- MAGIC A **`DELETE`** statement can remove one or many records, but will always result in a single transaction.
 
 -- COMMAND ----------
 
@@ -205,13 +200,10 @@ WHERE value > 6
 -- MAGIC ## 병합 사용(Using Merge)
 -- MAGIC
 -- MAGIC 일부 SQL 시스템은 업데이트, 삽입 및 기타 데이터 조작을 단일 명령으로 실행할 수 있는 upsert 개념을 가지고 있습니다. <br/>
--- MAGIC Some SQL systems have the concept of an upsert, which allows updates, inserts, and other data manipulations to be run as a single command.
 -- MAGIC
 -- MAGIC Databricks는 MERGE 키워드를 사용하여 이 작업을 수행합니다. <br/>
--- MAGIC Databricks uses the **`MERGE`** keyword to perform this operation.
 -- MAGIC
 -- MAGIC CDC(Change Data Capture) 피드에서 출력할 수 있는 4개의 레코드가 포함된 다음 임시 보기를 고려해 보십시오. <br/>
--- MAGIC Consider the following temporary view, which contains 4 records that might be output by a Change Data Capture (CDC) feed.
 
 -- COMMAND ----------
 
@@ -229,16 +221,12 @@ SELECT * FROM updates;
 -- MAGIC
 -- MAGIC
 -- MAGIC 지금까지 살펴본 구문을 사용하여 이 보기에서 유형별로 필터링하여 레코드를 삽입, 업데이트 및 삭제하는 3개의 문을 작성할 수 있습니다. 그러나 이렇게 하면 세 개의 개별 트랜잭션이 발생합니다. 이러한 트랜잭션 중 하나라도 실패하면 데이터가 잘못된 상태로 남을 수 있습니다. <br/>
--- MAGIC Using the syntax we've seen so far, we could filter from this view by type to write 3 statements, one each to insert, update, and delete records. But this would result in 3 separate transactions; if any of these transactions were to fail, it might leave our data in an invalid state.
 -- MAGIC
 -- MAGIC 대신, 우리는 이러한 행동을 단일 원자적 거래로 결합하여 세 가지 유형의 변경 사항을 모두 함께 적용한다. <br/>
--- MAGIC Instead, we combine these actions into a single atomic transaction, applying all 3 types of changes together.
 -- MAGIC
 -- MAGIC **`MERGE`** 문에는 일치시킬 필드가 하나 이상 있어야 하며, 일치할 때 또는 일치하지 않을 때 각 절에는 임의의 수의 추가 조건문이 있을 수 있습니다. <br/>
--- MAGIC **`MERGE`** statements must have at least one field to match on, and each **`WHEN MATCHED`** or **`WHEN NOT MATCHED`** clause can have any number of additional conditional statements.
 -- MAGIC
 -- MAGIC 여기서 **`id`** 필드를 일치시킨 다음 **`type`** 필드를 필터링하여 레코드를 적절히 업데이트, 삭제 또는 삽입합니다. <br/>
--- MAGIC Here, we match on our **`id`** field and then filter on the **`type`** field to appropriately update, delete, or insert our records.
 
 -- COMMAND ----------
 
