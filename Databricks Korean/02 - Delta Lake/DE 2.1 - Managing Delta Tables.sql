@@ -141,10 +141,9 @@ SELECT * FROM students
 -- MAGIC
 -- MAGIC
 -- MAGIC 놀랄 만한 것은 델타 레이크가 테이블에 대한 읽기가 **항상 최신 버전의 테이블을 반환**하고 진행 중인 작업으로 인해 교착 상태가 발생하지 않도록 보장한다는 것입니다. <br/>
--- MAGIC What may surprise you is that Delta Lake guarantees that any read against a table will **always** return the most recent version of the table, and that you'll never encounter a state of deadlock due to ongoing operations.
 -- MAGIC
--- MAGIC 반복하기: 테이블 읽기는 다른 작업과 충돌할 수 없으며, 데이터의 최신 버전은 레이크하우스를 쿼리할 수 있는 모든 클라이언트에서 즉시 사용할 수 있습니다. 모든 트랜잭션 정보는 데이터 파일과 함께 클라우드 객체 스토리지에 저장되므로 Delta Lake 테이블의 동시 읽기는 클라우드 공급업체의 객체 스토리지 하드 한계에 의해서만 제한됩니다. (**참고**: 무한하지는 않지만 초당 최소 수천 개의 읽기가 가능합니다.) <br/>
--- MAGIC To repeat: table reads can never conflict with other operations, and the newest version of your data is immediately available to all clients that can query your lakehouse. Because all transaction information is stored in cloud object storage alongside your data files, concurrent reads on Delta Lake tables is limited only by the hard limits of object storage on cloud vendors. (**NOTE**: It's not infinite, but it's at least thousands of reads per second.)
+-- MAGIC 테이블 읽기는 다른 작업과 충돌할 수 없으며, 데이터의 최신 버전은 레이크하우스를 쿼리하는 모든 클라이언트에서 즉시 사용 가능합니다. <br/>
+-- MAGIC 모든 트랜잭션 정보는 데이터 파일과 함께 클라우드 객체 스토리지에 저장되므로 Delta Lake 테이블의 동시 읽기는 클라우드 공급업체의 객체 스토리지 하드 한계에 의해서만 제한됩니다. <br/>(**참고**: 무한하지는 않지만 초당 최소 수천 개의 읽기가 가능합니다.) <br/>
 
 -- COMMAND ----------
 
