@@ -74,10 +74,8 @@ CREATE TABLE students
 -- MAGIC
 -- MAGIC
 -- MAGIC 만약 우리가 다시 돌아가서 그 셀을 실행하려고 한다면 테이블이 이미 존재하기 때문에 오류가 발생합니다. <br/>
--- MAGIC If we try to go back and run that cell again...it will error out! This is expected - because the table exists already, we receive an error.
 -- MAGIC
 -- MAGIC 테이블이 있는지 확인하는 인수가 없으면 인수를 추가할 수 있습니다. 이것은 우리의 실수를 극복할 것이다. <br/>
--- MAGIC We can add in an additional argument, **`IF NOT EXISTS`** which checks if the table exists. This will overcome our error.
 
 -- COMMAND ----------
 
@@ -92,10 +90,8 @@ CREATE TABLE IF NOT EXISTS students
 -- MAGIC
 -- MAGIC ## 데이터 삽입(Inserting Data)
 -- MAGIC 대부분의 경우 데이터는 다른 원본에서 쿼리한 결과로 테이블에 삽입됩니다. <br/>
--- MAGIC Most often, data will be inserted to tables as the result of a query from another source.
 -- MAGIC
 -- MAGIC 그러나 표준 SQL에서와 마찬가지로 다음과 같이 직접 값을 삽입할 수도 있습니다. <br/>
--- MAGIC However, just as in standard SQL, you can also insert values directly, as shown here.
 
 -- COMMAND ----------
 
@@ -109,7 +105,6 @@ INSERT INTO students VALUES (3, "Elia", 3.3);
 -- MAGIC
 -- MAGIC
 -- MAGIC 위의 셀에서 우리는 세 개의 개별 **`INSERT`** 문을 완성했습니다. 이들 각각은 자체 ACID 보증이 있는 별도의 거래로 처리된다. 대부분의 경우 단일 트랜잭션에 많은 레코드를 삽입합니다. <br/>
--- MAGIC In the cell above, we completed three separate **`INSERT`** statements. Each of these is processed as a separate transaction with its own ACID guarantees. Most frequently, we'll insert many records in a single transaction.
 
 -- COMMAND ----------
 
@@ -125,7 +120,6 @@ VALUES
 -- MAGIC
 -- MAGIC
 -- MAGIC Databricks에는 **`COMMIT`** 키워드가 없습니다. 트랜잭션은 실행되는 즉시 실행되고 성공하면 커밋됩니다. <br/>
--- MAGIC Note that Databricks doesn't have a **`COMMIT`** keyword; transactions run as soon as they're executed, and commit as they succeed.
 
 -- COMMAND ----------
 
@@ -135,8 +129,7 @@ VALUES
 -- MAGIC
 -- MAGIC ## 델타 테이블 쿼리(Querying a Delta Table)
 -- MAGIC
--- MAGIC Delta Lake 테이블을 쿼리하는 것이 표준 SELECT 문을 사용하는 것만큼 쉽다는 사실에 놀라지 않을 것입니다. <br/>
--- MAGIC You probably won't be surprised that querying a Delta Lake table is as easy as using a standard **`SELECT`** statement.
+-- MAGIC Delta Lake 테이블을 쿼리하는 것은 표준 SELECT 문을 사용하는 것만큼 쉽습니다. <br/>
 
 -- COMMAND ----------
 
