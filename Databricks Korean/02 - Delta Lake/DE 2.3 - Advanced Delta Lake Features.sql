@@ -224,7 +224,6 @@ ZORDER BY id
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 우리의 데이터가 얼마나 작은지를 고려할 때, **`ZORDER`** 는 어떠한 이점도 제공하지 않지만, 우리는 이 작업에서 발생하는 모든 메트릭을 볼 수 있다. <br/>
--- MAGIC Given how small our data is, **`ZORDER`** does not provide any benefit, but we can see all of the metrics that result from this operation.
 
 -- COMMAND ----------
 
@@ -234,7 +233,6 @@ ZORDER BY id
 -- MAGIC ## 델타 레이크 트랜잭션 검토(Reviewing Delta Lake Transactions)
 -- MAGIC
 -- MAGIC 델타 레이크 테이블의 모든 변경 사항이 트랜잭션 로그에 저장되므로 <a href="https://docs.databricks.com/spark/2.x/spark-sql/language-manual/describe-history.html" target="_blank">table history</a>를 쉽게 검토할 수 있습니다. <br/>
--- MAGIC Because all changes to the Delta Lake table are stored in the transaction log, we can easily review the <a href="https://docs.databricks.com/spark/2.x/spark-sql/language-manual/describe-history.html" target="_blank">table history</a>.
 
 -- COMMAND ----------
 
