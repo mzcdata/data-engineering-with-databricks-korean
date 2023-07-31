@@ -66,7 +66,8 @@
 
 # COMMAND ----------
 
-print("I'm running Python!")
+# MAGIC %python
+# MAGIC print("I'm running Python!")
 
 # COMMAND ----------
 
@@ -155,12 +156,12 @@ print("I'm running Python!")
 
 # COMMAND ----------
 
+
 print("Hello Python!")
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC
 # MAGIC select "Hello SQL!"
 
 # COMMAND ----------
@@ -229,7 +230,7 @@ print("Hello Python!")
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC -- SELECT * FROM demo_tmp_vw
+# MAGIC SELECT * FROM demo_tmp_vw
 
 # COMMAND ----------
 
@@ -282,10 +283,11 @@ print("Hello Python!")
 
 # COMMAND ----------
 
-print(f"DA:                   {DA}")
-print(f"DA.username:          {DA.username}")
-print(f"DA.paths.working_dir: {DA.paths.working_dir}")
-print(f"DA.db_name:           {DA.db_name}")
+# MAGIC %python
+# MAGIC print(f"DA:                   {DA}")
+# MAGIC print(f"DA.username:          {DA.username}")
+# MAGIC print(f"DA.paths.working_dir: {DA.paths.working_dir}")
+# MAGIC print(f"DA.db_name:           {DA.db_name}")
 
 # COMMAND ----------
 
@@ -317,7 +319,8 @@ print(f"DA.db_name:           {DA.db_name}")
 
 # COMMAND ----------
 
-dbutils.fs.ls("/databricks-datasets")
+# MAGIC %python
+# MAGIC dbutils.fs.ls("/databricks-datasets")
 
 # COMMAND ----------
 
@@ -334,7 +337,8 @@ dbutils.fs.ls("/databricks-datasets")
 
 # COMMAND ----------
 
-display(dbutils.fs.ls("/databricks-datasets"))
+# MAGIC %python
+# MAGIC display(dbutils.fs.ls("/databricks-datasets"))
 
 # COMMAND ----------
 
@@ -414,7 +418,8 @@ display(dbutils.fs.ls("/databricks-datasets"))
 
 # COMMAND ----------
 
-DA.cleanup()
+# MAGIC %python
+# MAGIC DA.cleanup()
 
 # COMMAND ----------
 

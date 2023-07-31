@@ -35,7 +35,6 @@
 -- MAGIC ## Run Setup
 -- MAGIC
 -- MAGIC 가장 먼저 할 일은 설치 스크립트를 실행하는 것입니다. 사용자 이름, 사용자 홈 및 각 사용자에 대한 범위가 지정된 데이터베이스를 정의합니다. <br/>
--- MAGIC The first thing we're going to do is run a setup script. It will define a username, userhome, and database that is scoped to each user.
 
 -- COMMAND ----------
 
