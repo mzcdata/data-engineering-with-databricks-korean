@@ -61,7 +61,8 @@ SELECT "${da.db_name}" AS db_name,
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC 공유 작업영역에서 작업할 수 있으므로, 이 과정은 데이터베이스가 다른 사용자와 충돌하지 않도록 사용자 이름에서 파생된 변수를 사용합니다. 다시 말하지만, Hive 변수의 이러한 사용은 개발을 위한 좋은 관행이라기보다는 우리의 수업 환경을 위한 해킹이라고 생각한다. <br>
+-- MAGIC 공유 작업영역에서 작업할 수 있으므로, 이 과정은 데이터베이스가 다른 사용자와 충돌하지 않도록 사용자 이름에서 파생된 변수를 사용합니다. <br/>
+-- MAGIC Hive 변수의 이러한 사용은 개발을 위한 좋은 관행이라기보다는 우리의 수업 환경을 위한 해킹이라고 생각한다. <br>
 -- MAGIC
 
 -- COMMAND ----------
@@ -167,7 +168,6 @@ DROP TABLE managed_table_in_db_with_default_location;
 -- MAGIC
 -- MAGIC
 -- MAGIC 테이블의 디렉토리와 로그 및 데이터 파일이 삭제됩니다. 데이터베이스 디렉토리만 남아 있습니다. <br>
--- MAGIC Note the table's directory and its log and data files are deleted. Only the database directory remains.
 
 -- COMMAND ----------
 
@@ -182,10 +182,8 @@ DROP TABLE managed_table_in_db_with_default_location;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 이제 데이터베이스에 사용자 지정 위치가 있는 테이블을 만들고 데이터를 삽입합니다. <br>
--- MAGIC We now create a table in  the database with custom location and insert data. 
 -- MAGIC
 -- MAGIC 스키마를 유추할 데이터가 없으므로 스키마를 제공해야 합니다.<br>
--- MAGIC Note that the schema must be provided because there is no data from which to infer the schema.
 
 -- COMMAND ----------
 
@@ -199,8 +197,7 @@ SELECT * FROM managed_table_in_db_with_custom_location;
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC 테이블 위치를 찾기 위해 설명을 다시 살펴보겠습니다. <br>
--- MAGIC Again, we'll look at the description to find the table location.
+-- MAGIC 테이블 위치를 찾기 위해 설명을 DESCRIBE 명령어를 실행해보겠습니다. <br>
 
 -- COMMAND ----------
 
@@ -211,7 +208,7 @@ DESCRIBE EXTENDED managed_table_in_db_with_custom_location;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 데이터베이스 작성 중에 **`LOCATION`** 키워드로 지정된 경로에 관리되는 테이블이 생성됩니다. 따라서 테이블의 데이터 및 메타데이터는 여기의 디렉토리에 유지됩니다. <br>
--- MAGIC As expected, this managed table is created in the path specified with the **`LOCATION`** keyword during database creation. As such, the data and metadata for the table are persisted in a directory here.
+-- MAGIC
 
 -- COMMAND ----------
 
@@ -228,8 +225,7 @@ DESCRIBE EXTENDED managed_table_in_db_with_custom_location;
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC 테이블을 삭제하자 <br> 
--- MAGIC Let's drop the table.
+-- MAGIC 테이블 삭제 <br> 
 
 -- COMMAND ----------
 
@@ -240,10 +236,8 @@ DROP TABLE managed_table_in_db_with_custom_location;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 테이블의 폴더와 로그 파일 및 데이터 파일이 삭제됩니다.<br>
--- MAGIC Note the table's folder and the log file and data file are deleted.  
 -- MAGIC   
 -- MAGIC 데이터베이스 위치만 남음<br>
--- MAGIC Only the database location remains
 
 -- COMMAND ----------
 
@@ -260,11 +254,9 @@ DROP TABLE managed_table_in_db_with_custom_location;
 -- MAGIC
 -- MAGIC  
 -- MAGIC ## Tables
--- MAGIC 샘플 데이터로 외부(관리되지 않는) 테이블을 만들 것입니다. <br>
--- MAGIC We will create an external (unmanaged) table from sample data. 
+-- MAGIC 샘플 데이터로 외부(unmanaged) 테이블을 만들 것입니다. <br>
 -- MAGIC
 -- MAGIC 우리가 사용할 데이터는 CSV 형식입니다. 우리는 우리가 선택한 디렉토리에 LOCATION이 제공된 Delta 테이블을 만들고 싶습니다.<br>
--- MAGIC The data we are going to use are in CSV format. We want to create a Delta table with a **`LOCATION`** provided in the directory of our choice.
 
 -- COMMAND ----------
 
@@ -285,7 +277,6 @@ SELECT * FROM external_table;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC  이 과정의 작업 디렉토리에서 테이블의 데이터 위치를 기록해 두겠습니다. <br>
--- MAGIC Let's note the location of the table's data in this lesson's working directory.
 
 -- COMMAND ----------
 
@@ -296,7 +287,6 @@ DESCRIBE TABLE EXTENDED external_table;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 지금 테이블을 삭제합니다 <br> 
--- MAGIC Now, we drop the table.
 
 -- COMMAND ----------
 
@@ -307,7 +297,6 @@ DROP TABLE external_table;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 테이블 정의는 더 이상 metastore에 존재하지 않지만 기본 데이터는 그대로 유지됩니다. <br>
--- MAGIC The table definition no longer exists in the metastore, but the underlying data remain intact.
 
 -- COMMAND ----------
 
@@ -334,7 +323,6 @@ DROP DATABASE ${da.db_name}_custom_location CASCADE;
 -- MAGIC %md
 -- MAGIC
 -- MAGIC 다음 셀을 실행하여 이 과정과 관련된 테이블 및 파일을 삭제합니다. <br>
--- MAGIC Run the following cell to delete the tables and files associated with this lesson.
 
 -- COMMAND ----------
 
