@@ -98,7 +98,7 @@ WHEN NOT MATCHED AND u.type = "insert"
 -- MAGIC
 -- MAGIC ## 테이블 세부 정보 검사(Examine Table Details)
 -- MAGIC
--- MAGIC 데이터브릭은 기본적으로 하이브 전이를 사용하여 데이터베이스, 테이블 및 보기를 등록합니다. <br/>
+-- MAGIC 데이터브릭은 기본적으로 데이터베이스, 테이블 및 뷰를 등록합니다. <br/>
 -- MAGIC
 -- MAGIC **`DESCRIBE EXTENDED`** 를 사용하면 테이블에 대한 중요한 메타데이터를 볼 수 있습니다.<br/>
 
@@ -142,7 +142,7 @@ DESCRIBE DETAIL students
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC 당사의 디렉토리에는 수많은 파르케 데이터 파일과 **`_delta_log`** 라는 이름의 디렉토리가 포함되어 있습니다. <br/>
+-- MAGIC 당사의 디렉토리에는 수많은 Parquet 데이터 파일과 **`_delta_log`** 라는 이름의 디렉토리가 포함되어 있습니다. <br/>
 -- MAGIC
 -- MAGIC 델타 레이크 테이블의 레코드는 Parquet 파일에 데이터로 저장된다. <br/>
 -- MAGIC
@@ -190,6 +190,7 @@ DESCRIBE DETAIL students
 
 -- MAGIC %python
 -- MAGIC display(spark.sql(f"SELECT * FROM json.`{DA.paths.user_db}/students/_delta_log/00000000000000000007.json`"))
+-- MAGIC # display(spark.sql(f"SELECT * FROM delta.`{DA.paths.user_db}/students`"))
 
 -- COMMAND ----------
 

@@ -125,7 +125,7 @@ SELECT * FROM managed_table_in_db_with_default_location;
 
 -- MAGIC %md
 -- MAGIC
--- MAGIC 확장 테이블 설명을 보고 위치를 찾을 수 있습니다(결과에서 아래로 스크롤해야 함). <br>
+-- MAGIC 확장 테이블 DESCRIBE 명령어를 통해 위치를 찾을 수 있습니다(결과에서 아래로 스크롤해야 함). <br>
 
 -- COMMAND ----------
 

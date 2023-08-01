@@ -60,12 +60,15 @@
 -- MAGIC - 스키마 (A schema)
 -- MAGIC
 -- MAGIC 참고: **Databricks Runtime 8.0 이상**에서는 델타 레이크가 기본 형식이므로 **델타를 사용할 필요가 없습니다.** <br/>
--- MAGIC **NOTE:** In Databricks Runtime 8.0 and above, Delta Lake is the default format and you don’t need **`USING DELTA`**.
 
 -- COMMAND ----------
 
 CREATE TABLE students
   (id INT, name STRING, value DOUBLE);
+
+-- COMMAND ----------
+
+DESCRIBE EXTENDED students;
 
 -- COMMAND ----------
 
@@ -97,6 +100,10 @@ CREATE TABLE IF NOT EXISTS students
 INSERT INTO students VALUES (1, "Yve", 1.0);
 INSERT INTO students VALUES (2, "Omar", 2.5);
 INSERT INTO students VALUES (3, "Elia", 3.3);
+
+-- COMMAND ----------
+
+SELECT * FROM students
 
 -- COMMAND ----------
 
@@ -242,14 +249,16 @@ WHEN NOT MATCHED AND u.type = "insert"
 
 -- COMMAND ----------
 
+SELECT * FROM students
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC
 -- MAGIC
 -- MAGIC MERGE 문의 영향을 받은 레코드는 3개뿐입니다. <br>
 -- MAGIC 업데이트 테이블의 레코드 중 하나는 학생 테이블에 일치하는 ID가 없지만 업데이트로 표시되어 있습니다. <br>
 -- MAGIC 사용자 지정 논리에 따라 이 레코드를 삽입하기보다는 무시했습니다. <br/>
--- MAGIC
--- MAGIC 최종 INSERT 절에 일치하지 않는 **`update`** 로 표시된 레코드를 포함하도록 위의 문장을 어떻게 수정하시겠습니까? <br/>
 
 -- COMMAND ----------
 
